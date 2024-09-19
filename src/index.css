@@ -2,9 +2,121 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-html, body, #root {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-  }
-  
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.inter-light {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+.inter-medium {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+.logo {
+  background-image: url('../public/assets/canirac.svg');
+  background-size: cover;
+}
+
+.logo-dark {
+  background-image: url('../public/assets/canirac-dark.svg');
+  background-size: cover;
+}
+
+.carousel-container {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 1s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+}
+
+.carousel-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel-button.left {
+  left: 10px;
+}
+
+.carousel-button.right {
+  right: 10px;
+}
+
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.carousel-dot {
+  width: 10px;
+  height: 10px;
+  background-color: gray;
+  border-radius: 50%;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  background-color: blue;
+}
+
+/* Snackbar.css */
+.snackbar {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: medium;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+.snackbar.success {
+  background-color: #95DCCB;
+  color: #398A77;
+  /* Green for success */
+}
+
+.snackbar.error {
+  background-color: #FFAAB4;
+  color: #C94858;
+  /* Red for error */
+}
