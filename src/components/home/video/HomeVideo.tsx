@@ -35,13 +35,13 @@ const HomeVideo: React.FC = () => {
 
     return (
         <div className="relative">
-            <div className="absolute inset-0 bg-background-dark z-30 opacity-25 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-background-dark z-30 opacity-10 pointer-events-none"></div>
             {videoUrl ? (
                 <VideoPlayer
                     src={videoUrl}
                     controls={false}
                     autoPlay={true}
-                    loop
+                    loop={true}
                     muted
                 />
             ) : (

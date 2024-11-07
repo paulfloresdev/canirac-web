@@ -30,7 +30,7 @@ const NavIcon: React.FC<NavIconProps> = ({ name, isMutable, bannerScrolled, isSe
         }
     }
 
-    return <img src={`/public/assets/icons/${type}/${name}.png`} alt="" className="h-5" />
+    return <img src={`/assets/icons/${type}/${name}.png`} alt="" className="h-5" />
 };
 
 export default NavIcon;

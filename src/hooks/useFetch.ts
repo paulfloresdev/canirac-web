@@ -15,7 +15,7 @@ export const useFetchShow = (model: 'memberships' | 'labels' | 'events' | 'servi
 }
 
 //  Index
-export const useFetchIndex = (model: 'memberships' | 'labels' | 'join-requests' | 'chamber-members' | 'services' | 'social-medias' | 'events', body: BodyInit | FormData | null, language: string) => {
+export const useFetchIndex = (model: 'memberships' | 'labels' | 'join-requests' | 'chamber-members' | 'services' | 'social-medias' | 'events' | 'contacts', body: BodyInit | FormData | null, language: string) => {
     return useQuery(
         `fetch_index_${model}`,
         () => {

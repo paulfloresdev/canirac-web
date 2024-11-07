@@ -17,7 +17,7 @@ const ToggleLanguage: React.FC<ToggleLanguageProps> = ({ isMutable, bannerScroll
             style={{ width: 'auto', height: 'auto' }} // Añadido para asegurar el tamaño adecuado
         >
             <img
-                src={`/public/assets/icons/${language}.png`}
+                src={`/assets/icons/${language}.png`}
                 className="h-6 object-contain"
                 alt="Language Icon"
                 style={{ maxWidth: '100%', maxHeight: '100%' }} // Limita el tamaño máximo

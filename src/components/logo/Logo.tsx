@@ -12,7 +12,7 @@ const Logo: React.FC<LogoProps> = ({ isMutable, bannerScrolled }) => {
     if (isMutable && !bannerScrolled) {
         return (
             <div className="flex items-center h-full"> {/* Centrar verticalmente */}
-                <img src="/public/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-18 w-48 object-cover' />
+                <img src="/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-18 w-48 object-cover' />
             </div>
         );
     }
@@ -20,9 +20,9 @@ const Logo: React.FC<LogoProps> = ({ isMutable, bannerScrolled }) => {
     return (
         <div className="flex items-center h-full"> {/* Centrar verticalmente */}
             {isDarkMode ? (
-                <img src="/public/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-18 w-48 object-cover' />
+                <img src="/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-18 w-48 object-cover' />
             ) : (
-                <img src="/public/assets/logo/canirac.png" alt="Canirac Logo" className='h-18 w-48 object-cover' />
+                <img src="/assets/logo/canirac.png" alt="Canirac Logo" className='h-18 w-48 object-cover' />
             )}
         </div>
     );
