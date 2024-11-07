@@ -4,7 +4,7 @@ import { useAuth } from '../../../context/AuthContext';
 import Input from "../../../components/widgets/Input";
 import { useSnackbar } from '../../../context/SnackbarContext';
 import { Drawer } from "../../../components/drawer/Drawer";
-import { fetchDestroyImage, fetchUpdateData, fetchUpdateImage, fetchUpdateVideo } from "../../../api/fetch";
+import { fetchDestroyImage, fetchUpdateData, fetchUpdateImage } from "../../../api/fetch";
 import TextArea from "../../../components/widgets/TextArea";
 
 
@@ -19,9 +19,9 @@ const EditServices: React.FC = () => {
     const [titleEn, setTitleEn] = useState<string>(service.title_en);
     const [descriptionEs, setDescriptionEs] = useState<string>(service.description_es);
     const [descriptionEn, setDescriptionEn] = useState<string>(service.description_en);
-    const [contactName, setContactName] = useState<string>(service.contact_name);
-    const [country, setCountry] = useState<string>(service.phone.slice(0,3));
-    const [phone, setPhone] = useState<string>(service.phone.slice(3,13));
+    //const [contactName, setContactName] = useState<string>(service.contact_name);
+    //const [country, setCountry] = useState<string>(service.phone.slice(0,3));
+    //const [phone, setPhone] = useState<string>(service.phone.slice(3,13));
 
     const [img, setImg] = useState<File | null>(null);
 
@@ -32,9 +32,9 @@ const EditServices: React.FC = () => {
     const [validation2, setValidation2] = useState<boolean>(false);
     const [validation3, setValidation3] = useState<boolean>(false);
     const [validation4, setValidation4] = useState<boolean>(false);
-    const [validation5, setValidation5] = useState<boolean>(false);
-    const [validation6, setValidation6] = useState<boolean>(false);
-    const [validation7, setValidation7] = useState<boolean>(false);
+    //const [validation5, setValidation5] = useState<boolean>(false);
+    //const [validation6, setValidation6] = useState<boolean>(false);
+    //const [validation7, setValidation7] = useState<boolean>(false);
     const [isSubmittingData, setIsSubmittingData] = useState<boolean>(false);
     const [isSubmittingImg, setIsSubmittingImg] = useState<boolean>(false);
     const [isDeleting, setIsDeleting] = useState<boolean>(false);
@@ -64,19 +64,19 @@ const EditServices: React.FC = () => {
         const isValidation2 = titleEn === '';
         const isValidation3 = descriptionEs === '';
         const isValidation4 = descriptionEn === '';
-        const isValidation5 = contactName === '';
-        const isValidation6 = country.length !== 3;
-        const isValidation7 = phone.length !== 10;
+        //const isValidation5 = contactName === '';
+        //const isValidation6 = country.length !== 3;
+        //const isValidation7 = phone.length !== 10;
         
         setValidation1(isValidation1);
         setValidation2(isValidation2);
         setValidation3(isValidation3);
         setValidation4(isValidation4);
-        setValidation5(isValidation5);
-        setValidation6(isValidation6);
-        setValidation7(isValidation7);
+        //setValidation5(isValidation5);
+        //setValidation6(isValidation6);
+        //setValidation7(isValidation7);
 
-        if (!isValidation1 && !isValidation2 && !isValidation3 && !isValidation4 && !isValidation5 && !isValidation6 && !isValidation7) {
+        if (!isValidation1 && !isValidation2 && !isValidation3 && !isValidation4/* && !isValidation5 && !isValidation6 && !isValidation7*/) {
             if (!token) {
                 showSnackbar('Error de autenticación.', 'error');
                 navigate('dashboard/login');
@@ -89,8 +89,8 @@ const EditServices: React.FC = () => {
                 "title_en": titleEn,
                 "description_es": descriptionEs,
                 "description_en": descriptionEn,
-                "contact_name": contactName,
-                "phone": country + phone
+                /*"contact_name": contactName,
+                "phone": country + phone*/
             });
             try {
                 await fetchUpdateData('services', id, apiServiceJson, token);

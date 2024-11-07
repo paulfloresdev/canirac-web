@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { TabFlag } from "../table/TabFlag";
 
 interface TextAreaProps {

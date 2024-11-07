@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from '../../../context/AuthContext';
 import Input from "../../../components/widgets/Input";
 import { useSnackbar } from '../../../context/SnackbarContext';
@@ -11,7 +11,6 @@ import TextArea from "../../../components/widgets/TextArea";
 const AddEvents: React.FC = () => {
     const { token } = useAuth();
     const navigate = useNavigate();
-    const location = useLocation();
 
     const [titleEs, setTitleEs] = useState<string>('');
     const [titleEn, setTitleEn] = useState<string>('');
@@ -40,8 +39,6 @@ const AddEvents: React.FC = () => {
     const [validation9, setValidation9] = useState<boolean>(false);
     const [validation10, setValidation10] = useState<boolean>(false);
     const [isSubmittingData, setIsSubmittingData] = useState<boolean>(false);
-    const [isSubmittingImg, setIsSubmittingImg] = useState<boolean>(false);
-    const [isDeleting, setIsDeleting] = useState<boolean>(false);
     const { showSnackbar } = useSnackbar(); // Asegúrate de desestructurar `showSnackbar`
 
     useEffect(() => {

@@ -4,7 +4,7 @@ import { useAuth } from '../../../context/AuthContext';
 import Input from "../../../components/widgets/Input";
 import { useSnackbar } from '../../../context/SnackbarContext';
 import { Drawer } from "../../../components/drawer/Drawer";
-import { fetchDestroyImage, fetchUpdateData, fetchUpdateImage, fetchUpdateVideo } from "../../../api/fetch";
+import { fetchDestroyImage, fetchUpdateData, fetchUpdateImage } from "../../../api/fetch";
 import TextArea from "../../../components/widgets/TextArea";
 
 

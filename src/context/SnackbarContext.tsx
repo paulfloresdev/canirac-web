@@ -1,4 +1,4 @@
-import React, { createContext, useState, ReactNode, useContext, FC } from 'react';
+import { createContext, useState, ReactNode, useContext, FC } from 'react';
 
 // Define el tipo para el contexto
 interface SnackbarContextType {

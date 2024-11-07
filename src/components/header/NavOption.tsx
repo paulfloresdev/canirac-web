@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import useDarkMode from "../../hooks/useDarkMode";
 import NavIcon from "./NavIcon";
 
