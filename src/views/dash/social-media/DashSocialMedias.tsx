@@ -27,7 +27,7 @@ const DashSocialMedias: React.FC = () => {
                 <div className="w-full flex flex-row justify-between items-start">
                     <div className="w-full flex flex-row justify-between items-start">
                         <span className="font-normal">Listado de redes sociales</span>
-                        <button onClick={handleAdd} className="w-1/12 h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
+                        <button onClick={handleAdd} className="w-auto h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                             Agregar +
                         </button>
                     </div>

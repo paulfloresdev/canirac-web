@@ -8,27 +8,24 @@ import { fetchDestroyImage, fetchUpdateData, fetchUpdateImage, fetchUpdateVideo 
 import TextArea from "../../../components/widgets/TextArea";
 
 
-const EditEvents: React.FC = () => {
+const EditServices: React.FC = () => {
     const { token } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
-    const { event } = location.state || {};  // Asegúrate de recibir el evento desde la ubicación
+    const { service } = location.state || {};  // Asegúrate de recibir el serviceo desde la ubicación
 
-    const [id] = useState<number>(event.id);
-    const [titleEs, setTitleEs] = useState<string>(event.title_es);
-    const [titleEn, setTitleEn] = useState<string>(event.title_en);
-    const [descriptionEs, setDescriptionEs] = useState<string>(event.description_es);
-    const [descriptionEn, setDescriptionEn] = useState<string>(event.description_en);
-    const [price, setPrice] = useState<string>(event.price);
-    const [date, setDate] = useState<string>(event.date.slice(0, 10));
-    const [time, setTime] = useState<string>(event.time);
-    const [address, setAddress] = useState<string>(event.address);
-    const [lat, setLat] = useState<string>(event.lat);
-    const [long, setLong] = useState<string>(event.long);
+    const [id] = useState<number>(service.id);
+    const [titleEs, setTitleEs] = useState<string>(service.title_es);
+    const [titleEn, setTitleEn] = useState<string>(service.title_en);
+    const [descriptionEs, setDescriptionEs] = useState<string>(service.description_es);
+    const [descriptionEn, setDescriptionEn] = useState<string>(service.description_en);
+    const [contactName, setContactName] = useState<string>(service.contact_name);
+    const [country, setCountry] = useState<string>(service.phone.slice(0,3));
+    const [phone, setPhone] = useState<string>(service.phone.slice(3,13));
 
     const [img, setImg] = useState<File | null>(null);
 
-    const [imgPath, setImgPath] = useState<string>(event.img_path); // Estado para la imagen vertical
+    const [imgPath, setImgPath] = useState<string>(service.img_path); // Estado para la imagen vertical
     const [imgStatus, setImgStatus] = useState<number>(imgPath ? 1 : 0);
 
     const [validation1, setValidation1] = useState<boolean>(false);
@@ -38,9 +35,6 @@ const EditEvents: React.FC = () => {
     const [validation5, setValidation5] = useState<boolean>(false);
     const [validation6, setValidation6] = useState<boolean>(false);
     const [validation7, setValidation7] = useState<boolean>(false);
-    const [validation8, setValidation8] = useState<boolean>(false);
-    const [validation9, setValidation9] = useState<boolean>(false);
-    const [validation10, setValidation10] = useState<boolean>(false);
     const [isSubmittingData, setIsSubmittingData] = useState<boolean>(false);
     const [isSubmittingImg, setIsSubmittingImg] = useState<boolean>(false);
     const [isDeleting, setIsDeleting] = useState<boolean>(false);
@@ -63,20 +57,17 @@ const EditEvents: React.FC = () => {
         }
     }, [img]);
 
-    const handleUpateData = async (event: React.FormEvent) => {
-        event.preventDefault();
+    const handleUpateData = async (service: React.FormEvent) => {
+        service.preventDefault();
 
         const isValidation1 = titleEs === '';
         const isValidation2 = titleEn === '';
         const isValidation3 = descriptionEs === '';
         const isValidation4 = descriptionEn === '';
-        const isValidation5 = false;
-        const isValidation6 = date === '';
-        const isValidation7 = time === '';
-        const isValidation8 = address === '';
-        const isValidation9 = false;
-        const isValidation10 = false;
-
+        const isValidation5 = contactName === '';
+        const isValidation6 = country.length !== 3;
+        const isValidation7 = phone.length !== 10;
+        
         setValidation1(isValidation1);
         setValidation2(isValidation2);
         setValidation3(isValidation3);
@@ -84,11 +75,8 @@ const EditEvents: React.FC = () => {
         setValidation5(isValidation5);
         setValidation6(isValidation6);
         setValidation7(isValidation7);
-        setValidation8(isValidation8);
-        setValidation9(isValidation9);
-        setValidation10(isValidation10);
 
-        if (!isValidation1 && !isValidation2 && !isValidation3 && !isValidation4 && !isValidation5 && !isValidation6 && !isValidation7 && !isValidation8 && !isValidation9 && !isValidation10) {
+        if (!isValidation1 && !isValidation2 && !isValidation3 && !isValidation4 && !isValidation5 && !isValidation6 && !isValidation7) {
             if (!token) {
                 showSnackbar('Error de autenticación.', 'error');
                 navigate('dashboard/login');
@@ -101,17 +89,13 @@ const EditEvents: React.FC = () => {
                 "title_en": titleEn,
                 "description_es": descriptionEs,
                 "description_en": descriptionEn,
-                "price": price,
-                "date": date,
-                "time": time,
-                "address": address,
-                "lat": lat,
-                "long": long,
+                "contact_name": contactName,
+                "phone": country + phone
             });
             try {
-                await fetchUpdateData('events', id, apiServiceJson, token);
+                await fetchUpdateData('services', id, apiServiceJson, token);
 
-                showSnackbar('Evento actualizado correctamente.', 'success');
+                showSnackbar('Servicio actualizado correctamente.', 'success');
             } catch (error) {
                 showSnackbar(`Ocurrió un error al guardar los datos. ${error}`, 'error');
             } finally {
@@ -129,7 +113,7 @@ const EditEvents: React.FC = () => {
 
         setIsDeleting(true);
         try {
-            await fetchDestroyImage('events', id, token);
+            await fetchDestroyImage('services', id, token);
             setImgPath('')
             showSnackbar('Imagen eliminada exitosamente.', 'success');
             setImgStatus(0);
@@ -142,8 +126,8 @@ const EditEvents: React.FC = () => {
         }
     }
 
-    const handleUpdateImage = async (event: React.FormEvent) => {
-        event.preventDefault();  // Esto previene el comportamiento predeterminado de enviar el formulario
+    const handleUpdateImage = async (service: React.FormEvent) => {
+        service.preventDefault();  // Esto previene el comportamiento predeterminado de enviar el formulario
 
         if (img) {
             if (!token) {
@@ -157,7 +141,7 @@ const EditEvents: React.FC = () => {
             formData.append("img", img);
 
             try {
-                await fetchUpdateImage('events', id, formData, token);
+                await fetchUpdateImage('services', id, formData, token);
                 showSnackbar('Imagen actualizada exitosamente.', 'success');
                 setImgStatus(1);
                 setImg(null);
@@ -263,63 +247,7 @@ const EditEvents: React.FC = () => {
                                     width="w-full"
                                 />
                             </div>
-                            <div className="w-full flex flex-col 2xl:flex-row space-y-8 2xl:space-y-0 space-x-0 2xl:space-x-2">
-                                <div className="w-full flex flex-row space-x-2">
-                                    <Input
-                                        type="number"
-                                        label="Precio"
-                                        value={price}
-                                        setValue={setPrice}
-                                        status={validation5}
-                                        width="w-full 2xl:w-2/12"
-                                    />
-                                    <Input
-                                        type="date"
-                                        label="Fecha"
-                                        value={date}
-                                        setValue={setDate}
-                                        status={validation6}
-                                        width="w-full 2xl:w-2/12"
-                                    />
-                                    <Input
-                                        type="time"
-                                        label="Hora"
-                                        value={time}
-                                        setValue={setTime}
-                                        maxLength={32}
-                                        status={validation7}
-                                        width="w-full 2xl:w-2/12"
-                                    />
-                                </div>
-                                <Input
-
-                                    type="text"
-                                    label="Dirección"
-                                    value={address}
-                                    setValue={setAddress}
-                                    maxLength={256}
-                                    status={validation8}
-                                    width="w-full 2xl:w-1/2"
-                                />
-                            </div>
-                            <div className="w-full flex flex-row space-x-2">
-                                <Input
-                                    type="number"
-                                    label="Latitud"
-                                    value={lat}
-                                    setValue={setLat}
-                                    status={validation9}
-                                    width="w-2/6 2xl:w-1/4"
-                                />
-                                <Input
-                                    type="number"
-                                    label="Longitud"
-                                    value={long}
-                                    setValue={setLong}
-                                    status={validation10}
-                                    width="w-2/6 2xl:w-1/4"
-                                />
-                            </div>
+                            
 
 
                             <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
@@ -334,4 +262,4 @@ const EditEvents: React.FC = () => {
     );
 };
 
-export default EditEvents;
+export default EditServices;

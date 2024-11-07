@@ -66,10 +66,10 @@ export const SocialMediasTab: React.FC = () => {
                             </div>
                             <button onClick={() => handleUrl(socialmedia.url)} className="w-7/12 text-selected-dark hover:text-primary text-start">{socialmedia.url}</button>
                             <div className="w-2/12 flex flex-row space-x-2 items-center justify-center">
-                                <button onClick={() => handleEdit(socialmedia)} className="bg-blue-600 hover:bg-blue-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
+                                <button onClick={() => handleEdit(socialmedia)} className="w-1/2 bg-blue-600 hover:bg-blue-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                     Editar
                                 </button>
-                                <button onClick={() => handleDelete(socialmedia.id)} className="bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
+                                <button onClick={() => handleDelete(socialmedia.id)} className="w-1/2 bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                     Eliminar
                                 </button>
                             </div>

@@ -5,13 +5,13 @@ import { useFetchIndexDash } from "../../../hooks/useFetch";
 import { Loader } from "../../../components/widgets/Loader";
 import { TabFlag } from "../../../components/table/TabFlag";
 import { useNavigate } from "react-router-dom";
-import { formatCurrency } from "../../../formats/formats";
+import { formatPhone } from "../../../formats/formats";
 import { useAuth } from "../../../context/AuthContext";
 import { useSnackbar } from "../../../context/SnackbarContext";
 import { fetchDestroy } from "../../../api/fetch";
 
-export const EventsTab: React.FC = () => {
-    const { data, isLoading, error, refetch } = useFetchIndexDash('events', null);
+export const ServicesTab: React.FC = () => {
+    const { data, isLoading, error, refetch } = useFetchIndexDash('services', null);
     const navigate = useNavigate();
     const { token } = useAuth();
     const { showSnackbar } = useSnackbar();
@@ -20,8 +20,8 @@ export const EventsTab: React.FC = () => {
         return <Loader />
     }
 
-    const handleEdit = (event: any) => {
-        navigate('/admin/eventos/editar', { state: { event } })
+    const handleEdit = (service: any) => {
+        navigate('/admin/servicios/editar', { state: { service } })
     }
 
     const handleDelete = async (id: number) => {
@@ -31,14 +31,14 @@ export const EventsTab: React.FC = () => {
             return;
         }
 
-        const confirmed = window.confirm('¿Estás seguro de que quieres eliminar este evento?');
+        const confirmed = window.confirm('¿Estás seguro de que quieres eliminar este serviceo?');
         if (!confirmed) {
             return;
         }
 
         try {
-            await fetchDestroy('events', id, token)
-            showSnackbar('Evento eliminado correctamente.', 'success');
+            await fetchDestroy('services', id, token)
+            showSnackbar('Servicio eliminado correctamente.', 'success');
             refetch(); // Refetch membership data to update the table
         } catch (error) {
             showSnackbar('Ocurrió un error al borrar los datos.', 'error');
@@ -58,37 +58,37 @@ export const EventsTab: React.FC = () => {
                     <span>Titulo</span>
                     <TabFlag lang="en" />
                 </div>
-                <span className="w-2/12 text-center">Fecha y hora</span>
-                <span className="w-2/12 text-center">Precio</span>
+                <span className="w-2/12">Contacto</span>
+                <span className="w-2/12 text-center">Teléfono</span>
                 <span className="w-1/12 text-center">Acciones</span>
             </Th>
             {/* Rows */}
             <div className="flex flex-col">
                 {
-                    data?.data.map((event: any) => {
-                        return <Td key={event.id}>
-                            {!event.img_path ?
+                    data?.data.map((service: any) => {
+                        return <Td key={service.id}>
+                            {!service.img_path ?
                                 <div className="w-1/12 h-24 bg-accent dark:bg-accent-dark border-solid flex items-center justify-center mx-start rounded-sm">
                                     <span className="font-medium text-primary">SN</span>
                                 </div>
 
                                 : <div className="w-1/12 h-24">
                                     <img
-                                        src={event.img_path}
-                                        alt={event.initials}
+                                        src={service.img_path}
+                                        alt={service.initials}
                                         className="w-full h-full object-cover bg-body dark:bg-body-dark border-solid rounded-sm"
                                     />
                                 </div>
                             }
-                            <span className="w-3/12">{event.title_es}</span>
-                            <span className="w-3/12">{event.title_en}</span>
-                            <span className="w-2/12 text-center">{`${event.date.slice(0,10)} ${event.time}`}</span>
-                            <span className="w-2/12 text-center">{formatCurrency(event.price)}</span>
+                            <span className="w-3/12">{service.title_es}</span>
+                            <span className="w-3/12">{service.title_en}</span>
+                            <span className="w-2/12">{service.contact_name}</span>
+                            <span className="w-2/12 text-center">{formatPhone(service.phone)}</span>
                             <div className="w-1/12 flex flex-col items-center space-y-2">
-                                <button onClick={() => handleEdit(event)} className="w-full bg-blue-600 hover:bg-blue-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
+                                <button onClick={() => handleEdit(service)} className="w-full bg-blue-600 hover:bg-blue-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
                                     Editar
                                 </button>
-                                <button onClick={() => handleDelete(event.id)} className="w-full bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
+                                <button onClick={() => handleDelete(service.id)} className="w-full bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                     Eliminar
                                 </button>
                             </div>

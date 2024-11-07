@@ -77,10 +77,10 @@ export const MembershipsTab: React.FC = () => {
                             <span className="w-2/12">{membership.size_en}</span>
                             <span className="w-3/12">{membership.description_en}</span>
                             <div className="w-2/12 flex flex-row space-x-2 justify-center">
-                                <button onClick={() => handleEdit(membership)} className=" bg-blue-600 hover:bg-blue-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
+                                <button onClick={() => handleEdit(membership)} className="w-1/2 bg-blue-600 hover:bg-blue-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                     Editar
                                 </button>
-                                <button onClick={() => handleDelete(membership.id)} className=" bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
+                                <button onClick={() => handleDelete(membership.id)} className="w-1/2 bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                     Eliminar
                                 </button>
                             </div>

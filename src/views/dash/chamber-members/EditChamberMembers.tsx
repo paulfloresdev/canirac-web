@@ -154,14 +154,14 @@ const EditChamberMembers: React.FC = () => {
                                     className="block w-full max-w-xs text-sm text-gray-500 dark:text-gray-300"
                                 />
                                 <div className="w-full flex flex-row space-x-2 pt-4 justify-center ">
-                                    <button type="submit" className="w-1/6 h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
+                                    <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                         {isSubmittingImg ? ((imgStatus === 0 || imgStatus === 2) ? 'Agregando...' : 'Actualizando...') : ((imgStatus === 0 || imgStatus === 2) ? 'Agregar' : 'Actualizar')}
                                     </button>
                                     {
                                         imgStatus === 1 ?
                                             <button
                                                 type="button"
-                                                className="w-1/6 h-9 bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium"
+                                                className="w-full h-9 bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium"
                                                 onClick={handleDeleteImage}
                                             >
                                                 {isDeleting ? 'Eliminando...' : 'Eliminar'}
@@ -183,7 +183,7 @@ const EditChamberMembers: React.FC = () => {
                                 status={validation1}
                                 width="w-full"
                             />
-                            <button type="submit" className="w-1/4 h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
+                            <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
                                 {isSubmittingData ? 'Guardando...' : 'Guardar'}
                             </button>
                         </form>

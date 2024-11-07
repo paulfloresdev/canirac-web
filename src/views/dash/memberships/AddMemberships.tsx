@@ -171,7 +171,7 @@ const AddMemberships: React.FC = () => {
                             />
                             <div className="w-1/2"></div>
                         </div>
-                        <button type="submit" className="w-1/12 h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
+                        <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
                             {isSubmitting ? 'Guardando...' : 'Guardar'}
                         </button>
                     </div>

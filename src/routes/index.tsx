@@ -22,6 +22,11 @@ const AddSocialMedias = React.lazy(() => import("../views/dash/social-media/AddS
 
 const DashEvents = React.lazy(() => import("../views/dash/events/DashEvents.tsx"));
 const EditEvents = React.lazy(() => import("../views/dash/events/EditEvents.tsx"));
+const AddEvents = React.lazy(() => import("../views/dash/events/AddEvents.tsx"));
+
+const DashServices = React.lazy(() => import("../views/dash/services/DashServices.tsx"));
+const EditServices = React.lazy(() => import("../views/dash/services/EditServices.tsx"));
+const AddServices = React.lazy(() => import("../views/dash/services/EditServices.tsx"));
 
 const AppRoutes = () => (
     <Routes>
@@ -127,6 +132,38 @@ const AppRoutes = () => (
             element={
                 <React.Suspense fallback={<Loader />}>
                     <EditEvents />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/admin/eventos/agregar"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <AddEvents />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/admin/servicios"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <DashServices />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/admin/servicios/editar"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <EditServices />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/admin/servicios/agregar"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <AddServices />
                 </React.Suspense>
             }
         />

@@ -194,7 +194,7 @@ export const fetchDestroy = async (model: 'memberships' | 'events' | 'services' 
     return data;
 }
 
-export const fetchDestroyImage = async (model: 'chamber-members' | 'events', id: number, token: string) => {
+export const fetchDestroyImage = async (model: 'chamber-members' | 'events' | 'services', id: number, token: string) => {
     const response = await fetch(`${BASE_URL}/api/${model}/${id}/image`, {
         method: 'DELETE',
         headers: {
