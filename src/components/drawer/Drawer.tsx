@@ -21,7 +21,7 @@ export const Drawer: React.FC<DrawerProps> = ({ page }) => {
     return (
         <div className="lg:w-72 xl:w-72 h-full lg:h-screen sticky top-0 bg-background-dark shadow-md px-4 py-6 flex flex-col justify-between">
             <div className="flex flex-col space-y-2">
-                <img src="/public/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-auto w-5/6 object-cover mx-auto mb-12' />
+                <img src="/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-auto w-5/6 object-cover mx-auto mb-12' />
                 <DrawerOption path="/admin/" label="Solicitudes de afiliación" isSelected={page === 0} />
                 <DrawerOption path="/admin/membresias" label="Tarifas de afiliación" isSelected={page === 1} />
                 <DrawerOption path="/admin/servicios" label="Servicios" isSelected={page === 2} />

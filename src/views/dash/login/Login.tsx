@@ -54,7 +54,7 @@ const LogIn: React.FC = () => {
 
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-custom-gradient dark:bg-custom-gradient-dark space-y-12">
-            <img src="/public/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-auto w-1/6 object-cover' />
+            <img src="/assets/logo/canirac-dark.png" alt="Canirac Logo" className='h-auto w-1/6 object-cover' />
             <div className="w-1/4 rounded-custom bg-accent dark:bg-accent-dark ">
                 <div className="w-full flex-1 flex-col px-8 py-12 flex items-center justify-center">
                     <form onSubmit={handleSubmit} className="w-full max-w-sm flex flex-col items-center">
