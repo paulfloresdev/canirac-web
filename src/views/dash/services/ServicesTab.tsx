@@ -49,7 +49,7 @@ export const ServicesTab: React.FC = () => {
         <div className="rounded-custom border-border dark:border-border-dark border-2 overflow-hidden">
             {/* Header */}
             <Th>
-                <span className="w-1/12">Imagen</span>
+                <span className="w-1/12 text-center">Imagen</span>
                 <div className="w-3/12 flex flex-row space-x-2 items-center">
                     <span>Titulo</span>
                     <TabFlag lang="es" />
@@ -68,11 +68,13 @@ export const ServicesTab: React.FC = () => {
                     data?.data.map((service: any) => {
                         return <Td key={service.id}>
                             {!service.img_path ?
-                                <div className="w-1/12 h-24 bg-accent dark:bg-accent-dark border-solid flex items-center justify-center mx-start rounded-sm">
-                                    <span className="font-medium text-primary">SN</span>
+                                <div className="w-1/12 h-24 2xl:h-40">
+                                    <div className="w-full h-full bg-accent dark:bg-accent-dark border-solid flex items-center justify-center mx-start rounded-sm">
+                                        <span className="font-medium text-primary">SN</span>
+                                    </div>
                                 </div>
 
-                                : <div className="w-1/12 h-24">
+                                : <div className="w-1/12 h-24 2xl:h-40">
                                     <img
                                         src={service.img_path}
                                         alt={service.initials}

@@ -15,7 +15,7 @@ const DashServices: React.FC = () => {
     }, [token, navigator]);
 
     const handleAdd = () => {
-        navigate('/admin/eventos/agregar')
+        navigate('/admin/servicios/agregar')
     }
 
     return (

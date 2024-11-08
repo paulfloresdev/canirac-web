@@ -67,7 +67,7 @@ const EditServices: React.FC = () => {
         //const isValidation5 = contactName === '';
         //const isValidation6 = country.length !== 3;
         //const isValidation7 = phone.length !== 10;
-        
+
         setValidation1(isValidation1);
         setValidation2(isValidation2);
         setValidation3(isValidation3);
@@ -160,12 +160,12 @@ const EditServices: React.FC = () => {
     return (
         <div className="h-screen flex flex-col lg:flex-row">
             {/* Menú fijo */}
-            <Drawer page={3} />
+            <Drawer page={2} />
 
             {/* Contenido desplazable */}
             <div className="flex-1 flex-col space-y-4 overflow-y-auto h-full bg-background-darker dark:bg-background-deep p-16">
                 <div className="">
-                    <span className="font-normal">Editar tarifa de afiliación</span>
+                    <span className="font-normal">Editar servicio</span>
                     <div className="w-full flex flex-row space-x-4 mt-8">
                         <form onSubmit={handleUpdateImage} className="w-2/6 2xl:w-1/6 h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-8">
                             <div className="flex-1 flex flex-col items-center justify-center space-y-4">
@@ -176,7 +176,7 @@ const EditServices: React.FC = () => {
                                         <div className='w-24 h-32 rounded-sm mt-2 p-1 border-solid border-2 border-border dark:border-border-dark'>
                                             <div className="w-full h-full bg-option rounded-sm"></div>
                                         </div>
-                                        
+
                                 }
                                 <input
                                     type="file"
@@ -247,7 +247,7 @@ const EditServices: React.FC = () => {
                                     width="w-full"
                                 />
                             </div>
-                            
+
 
 
                             <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">

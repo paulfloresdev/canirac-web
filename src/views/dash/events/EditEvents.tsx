@@ -181,7 +181,7 @@ const EditEvents: React.FC = () => {
             {/* Contenido desplazable */}
             <div className="flex-1 flex-col space-y-4 overflow-y-auto h-full bg-background-darker dark:bg-background-deep p-16">
                 <div className="">
-                    <span className="font-normal">Editar tarifa de afiliación</span>
+                    <span className="font-normal">Editar evento</span>
                     <div className="w-full flex flex-row space-x-4 mt-8">
                         <form onSubmit={handleUpdateImage} className="w-2/6 2xl:w-1/6 h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-8">
                             <div className="flex-1 flex flex-col items-center justify-center space-y-4">
@@ -192,7 +192,7 @@ const EditEvents: React.FC = () => {
                                         <div className='w-24 h-32 rounded-sm mt-2 p-1 border-solid border-2 border-border dark:border-border-dark'>
                                             <div className="w-full h-full bg-option rounded-sm"></div>
                                         </div>
-                                        
+
                                 }
                                 <input
                                     type="file"
@@ -204,17 +204,7 @@ const EditEvents: React.FC = () => {
                                     <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                         {isSubmittingImg ? ((imgStatus === 0 || imgStatus === 2) ? 'Agregando...' : 'Actualizando...') : ((imgStatus === 0 || imgStatus === 2) ? 'Agregar' : 'Actualizar')}
                                     </button>
-                                    {
-                                        imgStatus === 1 ?
-                                            <button
-                                                type="button"
-                                                className="w-full h-9 bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium"
-                                                onClick={handleDeleteImage}
-                                            >
-                                                {isDeleting ? 'Eliminando...' : 'Eliminar'}
-                                            </button> :
-                                            <div></div>
-                                    }
+
 
                                 </div>
 

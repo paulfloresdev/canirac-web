@@ -39,15 +39,15 @@ export const Footer: React.FC = () => {
             <div className="bg-accent-dark dark:bg-background-dark rounded-custom p-6 w-full lg:w-1/3 xl:w-1/3 space-y-4 h-full">
                 <span className="text-selected-dark text-base lg:text-lg xl:text-lg font-normal">{language === 'es' ? 'Contacto' : 'Contact'}</span>
                 <div className="flex flex-row space-x-2 items-center">
-                    <img src="/public/assets/icons/white/call.png" alt="" className="h-5" />
+                    <img src="/assets/icons/white/call.png" alt="" className="h-5" />
                     <span className="text-selected-dark">{formatPhoneNumber(contact.phone)}</span>
                 </div>
                 <div className="flex flex-row space-x-2 items-center">
-                    <img src="/public/assets/icons/white/sms.png" alt="" className="h-5" />
+                    <img src="/assets/icons/white/sms.png" alt="" className="h-5" />
                     <span className="text-selected-dark">{contact.email}</span>
                 </div>
                 <div className="flex flex-row space-x-2 items-start">
-                    <img src="/public/assets/icons/white/location.png" alt="" className="h-5" />
+                    <img src="/assets/icons/white/location.png" alt="" className="h-5" />
                     <button onClick={handleMarkerClick} className="text-selected-dark hover:text-primary text-start">{contact.address}</button>
                 </div>
             </div>

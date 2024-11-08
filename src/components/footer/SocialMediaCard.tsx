@@ -17,7 +17,7 @@ export const SocialMediaCard: React.FC = () => {
             isLoading || error ? <></> :
                 data?.data.map((socialmedia: any) => {
                     return <div className="flex flex-row space-x-2 items-center" key={socialmedia.id}>
-                        <img src={`/public/assets/icons/white/${socialmedia.type}.png`} alt="" className="h-5" />
+                        <img src={`/assets/icons/white/${socialmedia.type}.png`} alt="" className="h-5" />
                         <button onClick={() => handleUrl(socialmedia.url)} className="text-selected-dark hover:text-primary">{socialmedia.label}</button>
                     </div>
                 })

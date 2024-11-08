@@ -49,7 +49,7 @@ export const EventsTab: React.FC = () => {
         <div className="rounded-custom border-border dark:border-border-dark border-2 overflow-hidden">
             {/* Header */}
             <Th>
-                <span className="w-1/12">Imagen</span>
+                <span className="w-1/12 text-center">Imagen</span>
                 <div className="w-3/12 flex flex-row space-x-2 items-center">
                     <span>Titulo</span>
                     <TabFlag lang="es" />
@@ -68,11 +68,12 @@ export const EventsTab: React.FC = () => {
                     data?.data.map((event: any) => {
                         return <Td key={event.id}>
                             {!event.img_path ?
-                                <div className="w-1/12 h-24 bg-accent dark:bg-accent-dark border-solid flex items-center justify-center mx-start rounded-sm">
-                                    <span className="font-medium text-primary">SN</span>
+                                <div className="w-1/12 h-24 2xl:h-40">
+                                    <div className="w-full h-full bg-accent dark:bg-accent-dark border-solid flex items-center justify-center mx-start rounded-sm">
+                                        <span className="font-medium text-primary">SN</span>
+                                    </div>
                                 </div>
-
-                                : <div className="w-1/12 h-24">
+                                : <div className="w-1/12 h-24 2xl:h-40">
                                     <img
                                         src={event.img_path}
                                         alt={event.initials}
@@ -82,7 +83,7 @@ export const EventsTab: React.FC = () => {
                             }
                             <span className="w-3/12">{event.title_es}</span>
                             <span className="w-3/12">{event.title_en}</span>
-                            <span className="w-2/12 text-center">{`${event.date.slice(0,10)} ${event.time}`}</span>
+                            <span className="w-2/12 text-center">{`${event.date.slice(0, 10)} ${event.time}`}</span>
                             <span className="w-2/12 text-center">{formatCurrency(event.price)}</span>
                             <div className="w-1/12 flex flex-col items-center space-y-2">
                                 <button onClick={() => handleEdit(event)} className="w-full bg-blue-600 hover:bg-blue-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium mx-auto">
