@@ -61,11 +61,11 @@ const Input: React.FC<InputProps> = ({
 
     return (
         <div className={width}>
-            <div className="flex flex-col flex-1 relative">
+            <div className="flex flex-col flex-1 relative text-sm">
                 {noLabel ? <div></div> : flag ?
-                    <div className="flex flex-row space-x-2 items-center">
-                        <span className="mb-1 text-selected dark:text-selected-dark">{label}</span>
-                        <TabFlag lang={flag} />
+                    <div className="flex flex-row space-x-2 items-center mb-1">
+                        <span className="text-selected dark:text-selected-dark">{label}</span>
+                        <TabFlag lang={flag}/>
                     </div> :
                     <span className="mb-1 text-selected dark:text-selected-dark">{label}</span>}
                 <div className="relative">
@@ -74,7 +74,7 @@ const Input: React.FC<InputProps> = ({
                         onChange={handleChange}
                         type={showPasswordToggle && type === "password" ? (isPasswordVisible ? "text" : "password") : type}
                         maxLength={maxLength}
-                        className={`w-full ${status ? 'border-red-700 focus:border-red-700' : 'border-border dark:border-border-dark focus:border-focusborder dark:focus:border-focusborder-dark'} bg-background dark:bg-background-dark h-8 border-solid border-2 rounded-lg py-4 px-2 focus:outline-none ${className}`}
+                        className={`w-full ${status ? 'border-red-700 focus:border-red-700' : 'border-border dark:border-border-dark focus:border-focusborder dark:focus:border-focusborder-dark'} bg-background dark:bg-background-dark h-auto border-solid border-2 rounded-lg py-1.5 px-2 focus:outline-none ${className}`}
                     />
                     {showPasswordToggle && type === "password" && (
                         <button

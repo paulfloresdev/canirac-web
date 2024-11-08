@@ -60,7 +60,7 @@ const EditSocialMedias: React.FC = () => {
             try {
                 await fetchStore('social-medias', apiServiceJson, token);
 
-                showSnackbar('Red social actualizada correctamente.', 'success');
+                showSnackbar('Red social agregada correctamente.', 'success');
                 navigate('/admin/redes-sociales');
             } catch (error) {
                 showSnackbar(`Ocurrió un error al guardar los datos. ${error}`, 'error');
@@ -77,9 +77,9 @@ const EditSocialMedias: React.FC = () => {
             {/* Contenido desplazable */}
             <div className="flex-1 flex-col space-y-4 overflow-y-auto h-full bg-background-darker dark:bg-background-deep p-16">
                 <form onSubmit={handleUpate}>
-                    <div className="bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col">
-                        <span className="font-normal mb-8">Agregar red social</span>
-                        <div className="w-full flex flex-row space-x-4 items-end">
+                    <div className="bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-4">
+                        <span className="font-normal">Agregar red social</span>
+                        <div className="w-full flex flex-row space-x-2 items-end">
                             <div className="w-2/12">
                                 <ComboBox
                                     label="Red social"

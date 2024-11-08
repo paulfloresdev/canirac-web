@@ -35,20 +35,20 @@ export const ChamberMembersTab: React.FC = () => {
                 <span className="w-1/12 text-center">Acciones</span>
             </Th>
             {/* Rows */}
-            <div className="flex flex-col">
+            <div className="flex flex-col text-sm">
                 {
                     data?.data.map((member: any) => {
                         return <Td key={member.id}>
                             <div className="w-1/12 flex flex-col items-center">
                                 {!member.img_path ?
-                                    <div className="w-12 h-12 bg-accent dark:bg-accent-dark border-solid flex items-center justify-center rounded-full">
+                                    <div className="w-10 h-10 bg-accent dark:bg-accent-dark border-solid flex items-center justify-center rounded-full">
                                         <span className="font-medium text-primary">{member.initials}</span>
                                     </div>
 
                                     : <img
                                         src={member.img_path}
                                         alt={member.initials}
-                                        className="w-12 h-12 object-cover rounded-full bg-body dark:bg-body-dark border-solid"
+                                        className="w-10 h-10 object-cover rounded-full bg-body dark:bg-body-dark border-solid"
                                     />}
                             </div>
                             <span className="w-4/12">{member.name}</span>

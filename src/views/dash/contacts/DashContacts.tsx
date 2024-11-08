@@ -96,9 +96,9 @@ const DashContacts: React.FC = () => {
             {/* Content */}
             <div className="flex-1 flex-col space-y-4 overflow-y-auto h-full bg-background-darker dark:bg-background-deep p-16">
                 <form onSubmit={handleUpdate}>
-                    <div className="bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col">
-                        <span className="font-normal mb-8">Datos de contacto</span>
-                        <div className="w-full flex flex-row space-x-4 mb-4">
+                    <div className="bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-4">
+                        <span className="font-normal">Datos de contacto</span>
+                        <div className="w-full flex flex-row space-x-2">
                             <Input
                                 type="phone"
                                 label="Teléfono"
@@ -118,7 +118,7 @@ const DashContacts: React.FC = () => {
                                 width="w-1/4"
                             />
                         </div>
-                        <div className="w-full flex flex-row space-x-4 mb-4">
+                        <div className="w-full flex flex-row space-x-2">
                             <Input
                                 type="address"
                                 label="Domicilio"
@@ -129,7 +129,7 @@ const DashContacts: React.FC = () => {
                                 width="w-full"
                             />
                         </div>
-                        <div className="w-full flex flex-row space-x-4 mb-12">
+                        <div className="w-full flex flex-row space-x-2">
                             <Input
                                 type="text"
                                 label="Latitud"

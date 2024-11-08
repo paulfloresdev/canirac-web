@@ -56,7 +56,7 @@ export const SocialMediasTab: React.FC = () => {
                 <span className="w-2/12 text-center">Acciones</span>
             </Th>
             {/* Rows */}
-            <div className="flex flex-col">
+            <div className="flex flex-col text-sm">
                 {
                     data?.data.map((socialmedia: any) => {
                         return <Td key={socialmedia.id}>

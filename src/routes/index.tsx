@@ -4,6 +4,9 @@ import NotFound from '../components/NotFound'; // Componente 404
 import { Loader } from "../components/widgets/Loader.tsx";
 
 const Home = React.lazy(() => import("../views/public/Home.tsx"));
+const Services = React.lazy(() => import("../views/public/Services.tsx"));
+const Events = React.lazy(() => import("../views/public/Events.tsx"));
+
 
 const LogIn = React.lazy(() => import("../views/dash/login/Login.tsx"));
 
@@ -26,7 +29,7 @@ const AddEvents = React.lazy(() => import("../views/dash/events/AddEvents.tsx"))
 
 const DashServices = React.lazy(() => import("../views/dash/services/DashServices.tsx"));
 const EditServices = React.lazy(() => import("../views/dash/services/EditServices.tsx"));
-const AddServices = React.lazy(() => import("../views/dash/services/EditServices.tsx"));
+const AddServices = React.lazy(() => import("../views/dash/services/AddServices.tsx"));
 
 const AppRoutes = () => (
     <Routes>
@@ -36,6 +39,22 @@ const AppRoutes = () => (
             element={
                 <React.Suspense fallback={<Loader />}>
                     <Home />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/servicios"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <Services />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/eventos"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <Events />
                 </React.Suspense>
             }
         />
