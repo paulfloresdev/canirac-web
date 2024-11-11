@@ -51,7 +51,10 @@ export const Footer: React.FC = () => {
                     <button onClick={handleMarkerClick} className="text-selected-dark hover:text-primary text-start">{contact.address}</button>
                 </div>
             </div>
-            <MapWithMarker lat={contact.lat} lng={contact.long} />
+            <div className="w-full lg:w-1/2 h-64">
+                <MapWithMarker lat={contact.lat} lng={contact.long} />
+            </div>
+
         </div>
         <div className="w-content text-center mt-8 mx-auto"><span>© 2024 CANIRAC La Paz. Todos los derechos reservados.</span></div>
 
