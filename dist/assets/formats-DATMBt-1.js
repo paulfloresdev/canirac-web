@@ -1,1 +1,0 @@
-const t=e=>new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"}).format(e),n=e=>{const r=e.toString();return`(${r.slice(0,3)}) ${r.slice(3,6)} ${r.slice(6,9)} ${r.slice(9,13)}`};export{n as a,t as f};
