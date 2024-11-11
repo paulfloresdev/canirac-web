@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 
 interface MapWithMarkerProps {
@@ -7,8 +7,6 @@ interface MapWithMarkerProps {
 }
 
 const MapWithMarker: React.FC<MapWithMarkerProps> = ({ lat, lng }) => {
-    const [map, setMap] = useState<google.maps.Map | null>(null);
-
     const mapContainerStyle = {
         width: "100%",
         height: "100%", // Ajusta la altura según tus necesidades
@@ -26,14 +24,12 @@ const MapWithMarker: React.FC<MapWithMarkerProps> = ({ lat, lng }) => {
         googleMapsApiKey: "AIzaSyATXvNlti-DQ6cQ8SPDnjFnsq16i3o8t4o", // Reemplaza con tu API Key de Google Maps
     });
 
-    const onLoad = useCallback((map: google.maps.Map) => {
-        const bounds = new window.google.maps.LatLngBounds(center);
-        // Eliminar el fitBounds, ya que puede alterar el zoom
-        setMap(map);
+    const onLoad = useCallback(() => {
+        // No es necesario manejar map o bounds en esta función
     }, []);
 
     const onUnmount = useCallback(() => {
-        setMap(null);
+        // Al eliminar el mapa, no es necesario realizar ninguna acción adicional
     }, []);
 
     const handleMarkerClick = () => {
