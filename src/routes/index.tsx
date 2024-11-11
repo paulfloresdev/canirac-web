@@ -5,7 +5,9 @@ import { Loader } from "../components/widgets/Loader.tsx";
 
 const Home = React.lazy(() => import("../views/public/Home.tsx"));
 const Services = React.lazy(() => import("../views/public/Services.tsx"));
-const Events = React.lazy(() => import("../views/public/Events.tsx"));
+const Events = React.lazy(() => import("../views/public/Events/Events.tsx"));
+const EventPage = React.lazy(() => import("../views/public/Events/EventPage.tsx"));
+const Contact = React.lazy(() => import("../views/public/Contact.tsx"));
 
 
 const LogIn = React.lazy(() => import("../views/dash/login/Login.tsx"));
@@ -55,6 +57,22 @@ const AppRoutes = () => (
             element={
                 <React.Suspense fallback={<Loader />}>
                     <Events />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/eventos/detalle"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <EventPage />
+                </React.Suspense>
+            }
+        />
+        <Route
+            path="/contacto"
+            element={
+                <React.Suspense fallback={<Loader />}>
+                    <Contact />
                 </React.Suspense>
             }
         />

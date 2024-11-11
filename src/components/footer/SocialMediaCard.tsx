@@ -11,7 +11,7 @@ export const SocialMediaCard: React.FC = () => {
         window.open(url, "_blank");
     };
 
-    return <div className="bg-accent-dark dark:bg-background-dark rounded-custom p-6 w-full lg:w-1/3 xl:w-1/3 space-y-4 h-full">
+    return <div className="bg-accent-dark dark:bg-background-dark rounded-custom p-6 w-full lg:w-1/3 xl:w-1/3 space-y-4 h-auto">
         <span className="text-selected-dark text-base lg:text-lg xl:text-lg font-normal">{language === 'es' ? 'Redes sociales' : 'Social media'}</span>
         {
             isLoading || error ? <></> :

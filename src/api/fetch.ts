@@ -1,22 +1,42 @@
 import { BASE_URL } from "../constants/url";
 
-export const fetchIndex = async (model: 'memberships' | 'labels' | 'join-requests' | 'chamber-members' | 'services' | 'social-medias' | 'events' | 'contacts', body: BodyInit | FormData | null, language: string) => {
-    const response = await fetch(`${BASE_URL}/api/${model}?lang=${language}`, {
+export const fetchIndex = async (
+    model: 'memberships' | 'labels' | 'join-requests' | 'chamber-members' | 'services' | 'social-medias' | 'events' | 'contacts',
+    body: BodyInit | FormData | null,
+    language: string
+) => {
+    const url = new URL(`${BASE_URL}/api/${model}`);
+    url.searchParams.append("lang", language);
+
+    // Si `body` es un objeto (FormData), convierte sus entradas a parámetros de URL
+    if (body && !(body instanceof FormData)) {
+        const params = new URLSearchParams(body as unknown as Record<string, string>);
+        params.forEach((value, key) => url.searchParams.append(key, value));
+    } else if (body instanceof FormData) {
+        body.forEach((value, key) => url.searchParams.append(key, value.toString()));
+    }
+
+    const response = await fetch(url.toString(), {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
         },
-        body: body
     });
 
-    if (!response.ok) {
-        throw new Error('Failed to fetch');
+    // Manejo de error 404
+    if (response.status === 404) {
+        const data = await response.json();
+        console.log(data.message);
+        return data;
+    } else if (!response.ok) {
+        throw new Error("Error en la solicitud");
     }
 
     const data = await response.json();
     console.log(data.message);
     return data;
-}
+};
+
 
 export const fetchIndexDash = async (model: 'memberships' | 'events' | 'services' | 'chamber-members', body: BodyInit | FormData | null) => {
     const response = await fetch(`${BASE_URL}/api/${model}-dash`, {
