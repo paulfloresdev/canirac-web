@@ -11,13 +11,13 @@ export const SocialMediaCard: React.FC = () => {
         window.open(url, "_blank");
     };
 
-    return <div className="bg-accent-dark dark:bg-background-dark rounded-custom p-6 w-full lg:w-1/3 xl:w-1/3 space-y-4 h-full">
+    return <div className="bg-accent-dark dark:bg-background-dark rounded-custom p-6 w-full lg:w-1/3 xl:w-1/3 space-y-4 h-auto">
         <span className="text-selected-dark text-base lg:text-lg xl:text-lg font-normal">{language === 'es' ? 'Redes sociales' : 'Social media'}</span>
         {
             isLoading || error ? <></> :
                 data?.data.map((socialmedia: any) => {
                     return <div className="flex flex-row space-x-2 items-center" key={socialmedia.id}>
-                        <img src={`/public/assets/icons/white/${socialmedia.type}.png`} alt="" className="h-5" />
+                        <img src={`/assets/icons/white/${socialmedia.type}.png`} alt="" className="h-5" />
                         <button onClick={() => handleUrl(socialmedia.url)} className="text-selected-dark hover:text-primary">{socialmedia.label}</button>
                     </div>
                 })

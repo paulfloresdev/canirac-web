@@ -5,10 +5,14 @@ export default {
     extend: {
       width: {
         'card': '360px',
-        'content': '84vw'
+        'content': '84vw',
+        'flier-dash': '70px'
       },
       height: {
         'card': '280px',
+        'flier-dash': '93px',
+        'banner': '720px',
+        'banner-mob': '180px',
       },
       borderRadius: {
         'custom': '12px',

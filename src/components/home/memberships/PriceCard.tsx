@@ -1,5 +1,5 @@
 import React from "react";
-import { formatCurrency } from "../../../formats/formats";
+import { formatCurrency } from "../../../utils/formats";
 import { useLanguage } from "../../../context/LanguageContext";
 
 interface PriceCardProps {

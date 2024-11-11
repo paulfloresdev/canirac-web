@@ -135,14 +135,14 @@ const EditChamberMembers: React.FC = () => {
             {/* Contenido desplazable */}
             <div className="flex-1 flex-col space-y-4 overflow-y-auto h-full bg-background-darker dark:bg-background-deep p-16">
                 <div className="">
-                    <span className="font-normal">Editar tarifa de afiliación</span>
+                    <span className="font-normal">{member.role_es}</span>
                     <div className="w-full flex flex-row space-x-4 mt-8">
-                        <form onSubmit={handleUpdateImage} className="w-1/2 h-auto bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-8">
+                        <form onSubmit={handleUpdateImage} className="w-5/12 h-auto bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-4">
                             <div className="flex-1 flex flex-col items-center justify-center space-y-4">
-                                <span>Imagen</span>
+                                <span className="font-normal">Imagen</span>
                                 {
                                     imgPath ?
-                                        <img src={imgPath} alt={name} className='w-48 h-48 rounded-full mt-2 p-1 border-solid border-2 border-border dark:border-border-dark' /> :
+                                        <img src={imgPath} alt={name} className='w-48 h-48 rounded-full p-1 border-solid border-2 border-border dark:border-border-dark' /> :
                                         <div className='w-48 h-48 rounded-full mt-2 p-1 border-solid border-2 border-border dark:border-border-dark'>
                                             <div className="w-full h-full bg-option rounded-full"></div>
                                         </div>
@@ -153,7 +153,7 @@ const EditChamberMembers: React.FC = () => {
                                     onChange={(e) => setImg(e.target.files ? e.target.files[0] : null)}
                                     className="block w-full max-w-xs text-sm text-gray-500 dark:text-gray-300"
                                 />
-                                <div className="w-full flex flex-row space-x-2 pt-4 justify-center ">
+                                <div className="w-full flex flex-row space-x-2 justify-center ">
                                     <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                         {isSubmittingImg ? ((imgStatus === 0 || imgStatus === 2) ? 'Agregando...' : 'Actualizando...') : ((imgStatus === 0 || imgStatus === 2) ? 'Agregar' : 'Actualizar')}
                                     </button>
@@ -173,7 +173,8 @@ const EditChamberMembers: React.FC = () => {
 
                             </div>
                         </form>
-                        <form onSubmit={handleUpateData} className="w-1/2 h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-8">
+                        <form onSubmit={handleUpateData} className="w-full h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-4">
+                            <span className="font-normal">Datos</span>
                             <Input
                                 type="text"
                                 label="Nombre"

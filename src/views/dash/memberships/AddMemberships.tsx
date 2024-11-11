@@ -94,9 +94,9 @@ const AddMemberships: React.FC = () => {
             {/* Content */}
             <div className="flex-1 flex-col space-y-4 overflow-y-auto h-full bg-background-darker dark:bg-background-deep p-16">
                 <form onSubmit={handleStore}>
-                    <div className="bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col">
-                        <span className="font-normal mb-8">Agregar tarifa de afiliación</span>
-                        <div className="w-full flex flex-row space-x-4 mb-4">
+                    <div className="bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-4">
+                        <span className="font-normal">Agregar tarifa de afiliación</span>
+                        <div className="w-full flex flex-row space-x-2">
                             <Input
                                 type="text"
                                 label="Tamaño"
@@ -138,7 +138,7 @@ const AddMemberships: React.FC = () => {
                                 flag="en"
                             />
                         </div>
-                        <div className="w-full flex flex-row space-x-4 mb-12">
+                        <div className="w-full flex flex-row space-x-2">
                             <Input
                                 type="text"
                                 label="Sin alcohol"

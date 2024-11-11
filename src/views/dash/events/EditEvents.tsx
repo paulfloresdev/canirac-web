@@ -4,7 +4,7 @@ import { useAuth } from '../../../context/AuthContext';
 import Input from "../../../components/widgets/Input";
 import { useSnackbar } from '../../../context/SnackbarContext';
 import { Drawer } from "../../../components/drawer/Drawer";
-import { fetchDestroyImage, fetchUpdateData, fetchUpdateImage } from "../../../api/fetch";
+import { fetchUpdateData, fetchUpdateImage } from "../../../api/fetch";
 import TextArea from "../../../components/widgets/TextArea";
 
 
@@ -43,7 +43,6 @@ const EditEvents: React.FC = () => {
     const [validation10, setValidation10] = useState<boolean>(false);
     const [isSubmittingData, setIsSubmittingData] = useState<boolean>(false);
     const [isSubmittingImg, setIsSubmittingImg] = useState<boolean>(false);
-    const [isDeleting, setIsDeleting] = useState<boolean>(false);
     const { showSnackbar } = useSnackbar(); // Asegúrate de desestructurar `showSnackbar`
 
     useEffect(() => {
@@ -120,28 +119,6 @@ const EditEvents: React.FC = () => {
         }
     };
 
-    const handleDeleteImage = async () => {
-        if (!token) {
-            showSnackbar('Error de autenticación.', 'error');
-            navigate('dashboard/login');
-            return;
-        }
-
-        setIsDeleting(true);
-        try {
-            await fetchDestroyImage('events', id, token);
-            setImgPath('')
-            showSnackbar('Imagen eliminada exitosamente.', 'success');
-            setImgStatus(0);
-            setImg(null);
-        } catch (error) {
-            showSnackbar('Ocurrió un error al eliminar la imagen .', 'error');
-            console.log(error);
-        } finally {
-            setIsDeleting(false);
-        }
-    }
-
     const handleUpdateImage = async (event: React.FormEvent) => {
         event.preventDefault();  // Esto previene el comportamiento predeterminado de enviar el formulario
 
@@ -181,18 +158,15 @@ const EditEvents: React.FC = () => {
             {/* Contenido desplazable */}
             <div className="flex-1 flex-col space-y-4 overflow-y-auto h-full bg-background-darker dark:bg-background-deep p-16">
                 <div className="">
-                    <span className="font-normal">Editar tarifa de afiliación</span>
-                    <div className="w-full flex flex-row space-x-4 mt-8">
-                        <form onSubmit={handleUpdateImage} className="w-2/6 2xl:w-1/6 h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-8">
+                    <span className="font-normal">Editar evento</span>
+                    <div className="w-full flex flex-row space-x-4 mt-4">
+                        <form onSubmit={handleUpdateImage} className="w-2/6 2xl:w-1/6 h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-4">
                             <div className="flex-1 flex flex-col items-center justify-center space-y-4">
-                                <span>Imagen</span>
+                                <span className="font-normal">Imagen</span>
                                 {
                                     imgPath ?
-                                        <img src={imgPath} alt={titleEs} className='w-4/6 2xl:w-full h-56 rounded-md mt-2 p-1 border-solid border-2 border-border dark:border-border-dark object-cover' /> :
-                                        <div className='w-24 h-32 rounded-sm mt-2 p-1 border-solid border-2 border-border dark:border-border-dark'>
-                                            <div className="w-full h-full bg-option rounded-sm"></div>
-                                        </div>
-                                        
+                                        <img src={imgPath} alt={titleEs} className='w-full h-auto rounded-md p-1 border-solid border-2 border-border dark:border-border-dark object-cover' /> : <div></div>
+
                                 }
                                 <input
                                     type="file"
@@ -200,27 +174,18 @@ const EditEvents: React.FC = () => {
                                     onChange={(e) => setImg(e.target.files ? e.target.files[0] : null)}
                                     className="block w-full max-w-xs text-sm text-gray-500 dark:text-gray-300"
                                 />
-                                <div className="w-full flex flex-col space-y-2 pt-4 justify-center ">
+                                <div className="w-full flex flex-col space-y-2 justify-center ">
                                     <button type="submit" className="w-full h-9 bg-primary hover:bg-primary-dark text-selected-dark px-2 py-1 rounded-lg text-sm font-medium">
                                         {isSubmittingImg ? ((imgStatus === 0 || imgStatus === 2) ? 'Agregando...' : 'Actualizando...') : ((imgStatus === 0 || imgStatus === 2) ? 'Agregar' : 'Actualizar')}
                                     </button>
-                                    {
-                                        imgStatus === 1 ?
-                                            <button
-                                                type="button"
-                                                className="w-full h-9 bg-red-600 hover:bg-red-700 text-selected-dark px-2 py-1 rounded-lg text-sm font-medium"
-                                                onClick={handleDeleteImage}
-                                            >
-                                                {isDeleting ? 'Eliminando...' : 'Eliminar'}
-                                            </button> :
-                                            <div></div>
-                                    }
+
 
                                 </div>
 
                             </div>
                         </form>
-                        <form onSubmit={handleUpateData} className="w-4/6 2xl:w-5/6 h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-8">
+                        <form onSubmit={handleUpateData} className="w-4/6 2xl:w-5/6 h-full bg-accent dark:bg-accent-dark rounded-custom p-8 flex flex-col space-y-4">
+                            <span className="font-normal">Datos</span>
                             <div className="w-full flex flex-row space-x-2">
                                 <Input
                                     type="text"
@@ -263,7 +228,7 @@ const EditEvents: React.FC = () => {
                                     width="w-full"
                                 />
                             </div>
-                            <div className="w-full flex flex-col 2xl:flex-row space-y-8 2xl:space-y-0 space-x-0 2xl:space-x-2">
+                            <div className="w-full flex flex-col 2xl:flex-row space-y-4 2xl:space-y-0 space-x-0 2xl:space-x-2">
                                 <div className="w-full flex flex-row space-x-2">
                                     <Input
                                         type="number"

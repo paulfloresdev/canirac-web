@@ -117,7 +117,7 @@ const Header: React.FC<HeaderProps> = ({ page, isMutable }) => {
             </div>
 
             {/* Menu Items (Mobile) */}
-            <nav className={`${isOpen ? 'block' : 'hidden'} lg:hidden bg-background dark:bg-background-dark rounded-custom py-4 px-4 space-y-3 ml-16 mr-4 shadow-md shadow-accent dark:shadow-background-deep`}>
+            <nav className={`${isOpen ? 'block' : 'hidden'} lg:hidden bg-background dark:bg-background-dark rounded-custom py-4 px-4 space-y-3 mx-4 shadow-2xl shadow-option dark:shadow-background-deep border-solid border-2 border-border`}>
                 <NavOption
                     isMutable={false}
                     bannerScrolled={bannerScrolled}
