@@ -40,7 +40,7 @@ const Contact: React.FC = () => {
                 <div className="h-20"></div>
                 <div className="w-content h-2/3 mx-auto flex flex-col space-y-4">
                     <MapWithMarker lat={contact.lat} lng={contact.long} />
-                    <div className="flex flex-row space-x-4">
+                    <div className="flex flex-col lg:flex-row space-y-4 lg:space-y-0  lg:space-x-4">
                         <SocialMediaCard />
                         <div className="bg-accent-dark dark:bg-background-dark rounded-custom p-6 w-full lg:w-2/3 space-y-4 h-full">
                             <span className="text-selected-dark text-base lg:text-lg xl:text-lg font-normal">{language === 'es' ? 'Contacto' : 'Contact'}</span>
